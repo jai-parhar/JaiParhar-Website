@@ -25,8 +25,9 @@ const gamma = 2;
 // Initialize gridsize
 let Nx = 300;
 let Ny = 100;
-let dx = Math.ceil(windowW/Nx);
-let dy = Math.ceil(windowH/Ny);
+// dx and dy are based on what i know works, gonna just draw the stuff different
+let dx = Math.ceil(1728/Nx);
+let dy = Math.ceil(811/Ny);
 
 // Temporal discretization
 dt = 1/(1.1 * c * Math.sqrt((1/dx)*(1/dx) + (1/dy)*(1/dy)));
@@ -113,8 +114,8 @@ function fixBoundaryConds() {
 }
 
 function drawWaveEquation() {
-    dx = Math.ceil(windowW/Nx);
-    dy = Math.ceil(windowH/Ny);
+    boxW = Math.ceil(windowW/Nx);
+    boxH = Math.ceil(windowH/Ny);
 
     let flat = u.flat(); // flatten 2D into 1D
     let min = Math.min(...flat);
@@ -129,7 +130,7 @@ function drawWaveEquation() {
             drawVal = clamp(127 * Math.abs(u[x][y]), 0, 3*256/4);
             context.fillStyle = "rgb(" + drawVal +
              ", " + drawVal + ", " + drawVal + ")";
-            context.fillRect(dx*x, dy*y, dx, dy);
+            context.fillRect(boxW*x, boxH*y, boxW, boxH);
         }
     }
 }
@@ -243,4 +244,3 @@ function startAnimating(fps) {
 }
 
 startAnimating(120);
-
