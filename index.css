@@ -4,9 +4,39 @@ body {
   z-index: 1;
 }
 
+.aboutme-body {
+    display: flex; /* Enables Flexbox layout */
+    justify-content: space-around; /* Distributes space between items */
+    gap: 20px; /* Adds space between the flex items */
+}
+
+.aboutme-body-element {
+  flex: 1; /* Allows flex items to grow and shrink, taking equal space */
+  /* Add other styling as needed, e.g., background-color, padding, etc. */
+}
+
+.right-aligned-list {
+  float: right; /* This moves the entire list to the right */
+  list-style-type: none; /* Optional: remove default bullet points */
+  padding: 0; /* Optional: remove default padding */
+  margin: 0; /* Optional: remove default margin */
+}
+
 #background-canvas {
     position:absolute;
     left:0;
     top:0;
     z-index:-1;
+}
+
+#header {
+    font-size: x-large;
+}
+
+#footnote {
+    font-size: small;
+    position: fixed;
+    bottom: 0;
+    right: 0; /* Optional: adjust as needed for horizontal positioning */
+    /*width: 100%; /* Optional: adjust as needed */
 }
