@@ -56,3 +56,8 @@ body {
     right: 0; /* Optional: adjust as needed for horizontal positioning */
     /*width: 100%; /* Optional: adjust as needed */
 }
+
+::selection {
+  background-color: #ffffff; /* Sets the background color of the selection */
+  color: #000000; /* Sets the text color within the selection */
+}
