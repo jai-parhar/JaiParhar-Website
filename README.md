@@ -1,0 +1,2 @@
+# Personal Website
+This code is a little personal website I am working on! It is still in active development, and I will be putting more little code snippets into this when I have time. The background is currently a little RK4 solver for a 2D damped wave equation that I wrote in Javascript, which is an absolute pain because of the lack of JS array functionality. The website will be uploaded to jaiparhar.com, which is where you can see the most recent additions, while this github will be for unreleased editions and code version control.
