@@ -237,7 +237,7 @@ var fps, fpsInterval, startTime, now, then, elapsed;
 
 // initialize the timer variables and start the animation
 function startAnimating(fps) {
-    //startDropper();
+    startDropper();
     fpsInterval = 1000 / fps;
     then = Date.now();
     startTime = then;
