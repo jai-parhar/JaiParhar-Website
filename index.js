@@ -32,7 +32,7 @@ let dy = Math.ceil(811/Ny);
 // Temporal discretization
 dt = 1/(1.1 * c * Math.sqrt((1/dx)*(1/dx) + (1/dy)*(1/dy)));
 
-// Create empty Ny x Nx array
+// Create empty Nx x Ny array
 let u = [];
 for(let x = 0; x < Nx; x++) {
     u[x] = [];
