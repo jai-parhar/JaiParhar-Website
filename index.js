@@ -142,11 +142,13 @@ let amplitude = 10;
 
 
 // Initial Conditions        
+/*
 for(let x = 0; x < Nx; x++) {
     for(let y = 0; y < Ny; y++) {
         u[x][y] = amplitude*Math.exp(-((x - cx)**2 + (y - cy)**2) / (2 * sigma**2));
     }
 }
+*/
 
 function dropRandom() {
     const maxX = Nx - 10;
@@ -162,6 +164,7 @@ function dropRandom() {
     }
 }
 
+/*
 var dropper;
 function startDropper() {
     dropper = window.setInterval(dropRandom, 2000);
@@ -172,6 +175,7 @@ function stopDropper() {
 
 window.addEventListener('focus', startDropper);    
 window.addEventListener('blur', stopDropper);
+*/
 
 // Click to add a little gaussian packet
 canvas.addEventListener('click', function(event) {
@@ -191,6 +195,8 @@ canvas.addEventListener('click', function(event) {
     console.log(mouseX);
 });
 
+
+let lastDropFrameTime = 0;
 function update(timestamp) {
 
     // calc elapsed time since last loop
@@ -205,6 +211,13 @@ function update(timestamp) {
         // Get ready for next frame by setting then=now, but also adjust for your
         // specified fpsInterval not being a multiple of RAF's interval (16.7ms)
         then = now - (elapsed % fpsInterval);
+
+
+        // Every 2 seconds
+        if (now - lastDropFrameTime >= 2000) {
+            dropRandom();
+            lastDropFrameTime = now;
+        }
 
         // Perform update
         updateWaveEquation();
@@ -237,7 +250,7 @@ var fps, fpsInterval, startTime, now, then, elapsed;
 
 // initialize the timer variables and start the animation
 function startAnimating(fps) {
-    startDropper();
+    //startDropper();
     fpsInterval = 1000 / fps;
     then = Date.now();
     startTime = then;
