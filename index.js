@@ -215,12 +215,13 @@ function update(timestamp) {
 
         // Every 2 seconds
         if (now - lastDropFrameTime >= 2000) {
-            dropRandom();
+            //dropRandom();
             lastDropFrameTime = now;
         }
 
         // Perform update
         updateWaveEquation();
+        updateRotatingSource();
     
         frameCount += 1;
         
@@ -231,6 +232,27 @@ function update(timestamp) {
 
     // Request next frame
     requestAnimationFrame(update);
+}
+let phi = 0;
+function updateRotatingSource() {
+    let radius = 25;
+
+    phi += 0.05;
+
+    let s1_x = cx + radius*Math.cos(phi);
+    let s1_y = cy + radius*Math.sin(phi)/2;
+    let s2_x = cx - radius*Math.cos(phi);
+    let s2_y = cy - radius*Math.sin(phi)/2;
+    for(let x = 0; x < Nx; x++) {
+        for(let y = 0; y < Ny; y++) {
+            if ((Math.exp(-((x - s1_x)**2 + (y - s1_y)**2) / (2 * sigma**2)) > 0.5)) {
+                u[x][y] = amplitude*Math.exp(-((x - s1_x)**2 + (y - s1_y)**2) / (2 * sigma**2));
+            }
+            if ((Math.exp(-((x - s2_x)**2 + (y - s2_y)**2) / (2 * sigma**2)) > 0.5)) {
+                u[x][y] = amplitude*Math.exp(-((x - s2_x)**2 + (y - s2_y)**2) / (2 * sigma**2));
+            }
+        }
+    }
 }
 
 // WHY ISNT THIS ALREADY A FUNCTION. COME ON JAVASCRIPT
